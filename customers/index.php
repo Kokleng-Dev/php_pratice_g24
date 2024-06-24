@@ -9,7 +9,7 @@
     <div style="padding:12px;">
         <div class="card">
             <div class="card-header">
-                <h2><i class="fas fa-users"></i> List of User</h2>
+                <h2><i class="fas fa-users"></i> List of Customer</h2>
             </div>
             <div class="card-body">
                 <div class="row">
