@@ -18,7 +18,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="note">Note</label>
-                        <textarea name="note" id="note"></textarea>
+                        <textarea name="note" id="note" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

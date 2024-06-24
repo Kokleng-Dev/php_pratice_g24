@@ -1,4 +1,4 @@
-<?php include("../configs/global.php"); ?>
+<?php include("../../configs/global.php"); ?>
 
 <?php include("../layouts/header.php"); ?>
 
@@ -7,6 +7,7 @@
     
     <!-- body  -->
     <div style="padding:12px;">
+        <h1 class="colorPink">hello</h1>
         <div class="card">
             <div class="card-header">
                 <h2><i class="fas fa-users"></i> List of User</h2>

@@ -1,4 +1,4 @@
-<?php include("configs/global.php"); ?>
+<?php include("../configs/global.php"); ?>
 
 <?php include("layouts/header.php"); ?>
 
