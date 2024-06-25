@@ -2,6 +2,14 @@
 
 <?php include("../layouts/header.php"); ?>
 
+<?php
+    if($_SESSION['is_login'] == false){
+        header("Location: ". route('login'));
+    }
+?>
+
+
+
     <!-- modal  -->
     <?php include("create.php") ?>
 

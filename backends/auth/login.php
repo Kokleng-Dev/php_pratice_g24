@@ -1,22 +1,16 @@
 <?php include("../../configs/global.php"); ?>
 <?php include('../layouts/html_header.php') ?>
+
 <?php
-    $status = -1;
-    $sms = "";
-
-    if(isset($_GET['status']) && isset($_GET['sms'])){
-        $status = $_GET['status'];
-        $sms = $_GET['sms'];
+    $logic = [];
+    if(isset($_SESSION['logic'])){
+        $logic = $_SESSION['logic'];
     }
-
-    if(isset($_COOKIE['auth'])){
-        if($_COOKIE['auth'] == true && $status != -2 ){
-            header("Location: ". route('home'));
-        } else {
-            setcookie('auth',false,time() - 1000);
+    if(isset($_SESSION['is_login'])){
+        if($_SESSION['is_login'] == true){
+            header("Location: " . route('home'));
         }
     }
-
 ?>
 <div class="container">
     <div class="row">
@@ -30,16 +24,7 @@
                         </div>
                         <div class="card-body">
                             <form action="<?php echo route('auth.login'); ?>" method="POST">
-                                <?php if($status == 0){ ?>
-                                    <div class="mb-3 alert alert-danger">
-                                        <?php echo $sms; ?>
-                                    </div>
-                                <?php } ?>
-                                <?php if($status == -2){ ?>
-                                    <div class="mb-3 alert alert-success">
-                                        <?php echo $sms; ?>
-                                    </div>
-                                <?php } ?>
+                                <?php include('../../configs/message.php'); ?>
                                 <div class="mb-3">
                                     <label for="username">Username</label>
                                     <input type="text" name="username" class="form-control" required>
