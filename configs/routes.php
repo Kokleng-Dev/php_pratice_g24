@@ -1,9 +1,12 @@
 <?php
 
 $routes = [
-    'home' => '/index.php',
+    'home' => '/',
     'user' => '/users/index.php',
-    'customer' => '/customers/index.php'
+    'customer' => '/customers/index.php',
+    'login' => '/auth/login.php',
+    'auth.login' => '/auth/actions/login_action.php',
+    'auth.logout' => '/auth/actions/logout_action.php'
 ];
 
 
