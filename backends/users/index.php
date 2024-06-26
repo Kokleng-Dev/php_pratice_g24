@@ -1,4 +1,5 @@
 <?php include("../../configs/global.php"); ?>
+<?php $title = "User Page"; ?>
 
 <?php include("../layouts/header.php"); ?>
 

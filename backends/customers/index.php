@@ -1,4 +1,5 @@
 <?php include("../../configs/global.php"); ?>
+<?php $title = "Customer Page"; ?>
 
 <?php include("../layouts/header.php"); ?>
 
