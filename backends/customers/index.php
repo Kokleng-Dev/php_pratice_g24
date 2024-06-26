@@ -7,6 +7,8 @@
     if($_SESSION['is_login'] == false){
         header("Location: ". route('login'));
     }
+
+    $customers = $mysqli->query('select * from customers');
 ?>
 
 
@@ -26,25 +28,32 @@
                         <button data-bs-toggle="modal" data-bs-target="#createModal" class="btn btn-sm btn-primary"><i class="fas fa-plus-circle"></i> Create</button>
                     </div>
                     <div class="col-12">
+                        <?php include('../../configs/message.php'); ?>
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Phone</th>
+                                    <th>Note</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>   
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Hello</td>
-                                    <td>01929129129</td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-success"><i class="fas fa-pen"></i> Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
+                                <?php $i = 1; ?>
+                                <?php while($customer = $customers->fetch_object()){?>
+                                    <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td><?php echo $customer->name ?></td>
+                                        <td><?php echo $customer->phone ?></td>
+                                        <td><?php echo $customer->note ?></td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-pen"></i> Edit <?php echo $customer->id ?></a>
+                                            <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete <?php echo $customer->id ?></a>
+                                        </td>
+                                    </tr>
+                                    <?php $i++; ?>
+                                <?php }?>
                             </tbody>
                         </table>
                     </div>
