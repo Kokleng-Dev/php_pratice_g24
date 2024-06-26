@@ -18,6 +18,12 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo isRoute('file') ? 'text-white' : ''; ?> " href="<?php echo route('file'); ?>"><i class="fa fa-file"></i> File</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link <?php echo isRoute('photo') ? 'text-white' : ''; ?> " href="<?php echo route('photo'); ?>"><i class="fa fa-file"></i> Photo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php echo isRoute('picture') ? 'text-white' : ''; ?> " href="<?php echo route('picture'); ?>"><i class="fa fa-file"></i> Picture</a>
+            </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
