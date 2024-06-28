@@ -62,4 +62,5 @@ $mysql->query(CREAT_TABLE_PRODUCTS);
 $mysql->query(CREATE_TABLE_PRODUCT_ORDERS);
 $mysql->query(CREATE_TABLE_PRODUCT_ORDER_DETAILS);
 
+
 ?>
