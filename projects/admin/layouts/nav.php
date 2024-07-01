@@ -28,8 +28,8 @@
         </li>
       </ul>
       <ul class="navbar-nav d-flex justify-content-end w-100">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+        <li class="nav-item btn btn-danger btn-logout">
+          <a class="nav-link text-white" href="<?php echo $burl . "/admin/auth/action_logout.php"; ?>">Logout</a>
         </li>
       </ul>
     </div>

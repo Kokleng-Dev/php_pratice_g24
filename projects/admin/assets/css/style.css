@@ -1,4 +1,4 @@
-.navbar-nav .nav-item:hover:not(.navActive){
+.navbar-nav .nav-item:hover:not(.navActive, .btn-logout){
     background-color: rgb(147, 147, 243) !important;
 }
 .navbar-nav .nav-item:hover a{
