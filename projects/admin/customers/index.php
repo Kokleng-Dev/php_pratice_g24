@@ -12,23 +12,26 @@
     $countCustomer = 0;
     $totalButton = 0;
     $search = '';
+    $orderBy = isset($_GET['orderBy']) ? $_GET['orderBy']  : 'ASC';
     $customer = '';
 
     if(isset($_GET['search']) && $_GET['search'] != ''){
         $search = $_GET['search'];
 
-        $countCustomer = $mysql->query("SELECT COUNT(*) as total from customers WHERE name LIKE '%$search%'")->fetch_object();
+        $countCustomer = $mysql->query("SELECT COUNT(*) as total from customers WHERE name LIKE '%$search%' ORDER BY name $orderBy")->fetch_object();
         $totalButton = round($countCustomer->total / $per_page);
 
-        $customers = $mysql->query("SELECT * FROM customers WHERE name LIKE '%$search%' LIMIT $per_page OFFSET $start_page");
+        $customers = $mysql->query("SELECT * FROM customers WHERE name LIKE '%$search%'  ORDER BY name $orderBy LIMIT $per_page OFFSET $start_page");
 
     } else {
         $countCustomer = $mysql->query("SELECT COUNT(*) as total from customers")->fetch_object();
         $totalButton = round($countCustomer->total / $per_page);
 
-        $customers = $mysql->query("SELECT * FROM customers LIMIT $per_page OFFSET $start_page");
+        $customers = $mysql->query("SELECT * FROM customers ORDER BY name $orderBy LIMIT $per_page OFFSET $start_page");
     }
 
+
+    $orderBy = isset($_GET['orderBy']) ? ($_GET['orderBy'] == 'ASC' ? 'DESC' : 'ASC') : 'ASC';
 
     // while($customer = $customers->fetch_object()){
     //     var_dump($customer);
@@ -84,7 +87,7 @@
                     <tr>
                         <th>#</th>
                         <th>Photo</th>
-                        <th>Name</th>
+                        <th>Name<a href="<?php  echo $burl . '/admin/customers/index.php?search=' . $search . '&orderBy=' . $orderBy;?>" class="sort float-end mx-3"><i class="fas fa-sort"></i></a></th>
                         <th>Action</th>
                     </tr>
                 </thead>

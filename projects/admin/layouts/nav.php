@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-lg bg-info-subtle p-0">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php echo $burl . "/admin/index.php"; ?>">
-        <img src="#" class="rounded-circle" style="width: 50px; height: 50px;" alt="">
+    <?php
+      $com = $mysql->query("SELECT photo FROM company WHERE id = '1'")->fetch_object();
+    ?>
+        <img src="<?php echo $com->photo; ?>" class="rounded-circle" style="width: 50px; height: 50px;" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -29,7 +32,7 @@
       </ul>
       <ul class="navbar-nav d-flex justify-content-end w-100">
         <li class="nav-item btn btn-danger btn-logout">
-          <a class="nav-link text-white" href="<?php echo $burl . "/admin/auth/action_logout.php"; ?>">Logout</a>
+          <a class="nav-link text-white" href="<?php echo $burl . "/admin/auth/action_logout.php"; ?>"><i class="fas fa-reply-all"></i> Logout</a>
         </li>
       </ul>
     </div>

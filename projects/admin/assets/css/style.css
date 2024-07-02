@@ -13,3 +13,7 @@
 .navActive a{
     color: white !important;
 }
+.sort{
+    text-decoration: none !important;
+    color: black;
+}

@@ -18,6 +18,7 @@
                         <h2 class="mb-0 text-center">Login</h2>
                     </div>
                     <div class="card-body">
+                        <?php  include($_SERVER['DOCUMENT_ROOT'] . "/web_form/projects/admin/layouts/sms.php") ?>
                         <div class="mb-3">
                             <label for="username">Username</label>
                             <input id="username" type="text" name="username" class="form-control" required>
