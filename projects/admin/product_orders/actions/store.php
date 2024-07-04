@@ -62,6 +62,8 @@ if(isset($_POST['myOrder']) && isset($_POST['myOrderIndex'])){
 
 
     unset($_SESSION['orders'][$myOrderIndex]);
+    header("Location: ". $burl . "/admin/product_orders/print.php?product_order_id=" . $product_order_id);
+    exit();
 
 } else {
     $_SESSION['message'] = [

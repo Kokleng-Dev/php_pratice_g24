@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-info-subtle p-0">
+<nav class="navbar navbar-expand-lg bg-info-subtle p-0 d-none-print">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php echo $burl . "/admin/index.php"; ?>">
     <?php
@@ -22,6 +22,12 @@
         </li>
         <li class="nav-item <?php echo $page == 'order' ? "navActive" : " "; ?>">
           <a class="nav-link" href="<?php echo $burl . "/admin/product_orders/index.php"; ?>"><i class="fas fa-cart-arrow-down"></i> Order</a>
+        </li>
+        <li class="nav-item <?php echo $page == 'invoice' ? "navActive" : " "; ?>">
+          <a class="nav-link" href="<?php echo $burl . "/admin/invoices/index.php"; ?>"><i class="fas fa-receipt"></i> Invoice</a>
+        </li>
+        <li class="nav-item <?php echo $page == 'report' ? "navActive" : " "; ?>">
+          <a class="nav-link" href="<?php echo $burl . "/admin/reports/index.php"; ?>"><i class="fas fa-receipt"></i> Reports</a>
         </li>
         <li class="nav-item <?php echo $page == 'category' ? "navActive" : " "; ?>">
           <a class="nav-link" href="<?php echo $burl . "/admin/product_categories/index.php"; ?>"><i class="fas fa-luggage-cart"></i> Category</a>
