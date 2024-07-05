@@ -22,11 +22,12 @@
         $countProductOrder = $mysql->query("
             SELECT COUNT(*) as total FROM product_orders
             INNER JOIN customers ON customers.id = product_orders.customer_id
-            INNER JOIN users ON users.id = product_orders.created_by
+            LEFT JOIN users ON users.id = product_orders.created_by
             WHERE product_orders.inv_code LIKE '%$search%' OR 
             customers.name LIKE '%$search%' OR 
             users.name LIKE '%$search%' OR
-            product_orders.grand_total LIKE '%$search%' 
+            product_orders.grand_total LIKE '%$search%'  AND
+            product_orders.active = 1
             ORDER BY $keyOrder $orderBy
         ")->fetch_object();
 
@@ -35,11 +36,12 @@
         $productOrders = $mysql->query("
             SELECT product_orders.*, customers.name as customer_name, users.name as user_name from product_orders 
             INNER JOIN customers ON customers.id = product_orders.customer_id
-            INNER JOIN users ON users.id = product_orders.created_by
+            LEFT JOIN users ON users.id = product_orders.created_by
             WHERE product_orders.inv_code LIKE '%$search%' OR 
             customers.name LIKE '%$search%' OR 
             users.name LIKE '%$search%' OR
-            product_orders.grand_total LIKE '%$search%' 
+            product_orders.grand_total LIKE '%$search%' AND
+            product_orders.active = 1
             ORDER BY $keyOrder $orderBy
             LIMIT $per_page OFFSET $start_page
         ");
@@ -51,7 +53,8 @@
         $productOrders = $mysql->query("
             SELECT product_orders.*, customers.name as customer_name, users.name as user_name from product_orders 
             INNER JOIN customers ON customers.id = product_orders.customer_id
-            INNER JOIN users ON users.id = product_orders.created_by
+            LEFT JOIN users ON users.id = product_orders.created_by
+            WHERE product_orders.active = 1
             ORDER BY $keyOrder $orderBy
             LIMIT $per_page OFFSET $start_page
         ");

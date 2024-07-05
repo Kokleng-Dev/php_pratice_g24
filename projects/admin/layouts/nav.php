@@ -51,5 +51,12 @@
 <?php
     if($_SESSION['login'] == false){
         header("Location: " . $burl . "/admin/auth/login.php");
+    } else {
+      $auth = $_SESSION['auth'];
+      $checkAuth = $mysql->query("SELECT * FROM users WHERE id = '$auth' LIMIT 1");
+      if(!$checkAuth->fetch_object()){
+        $_SESSION['login'] = false;
+        header("Location: " . $burl . "/admin/auth/login.php");
+      }
     }
 ?>

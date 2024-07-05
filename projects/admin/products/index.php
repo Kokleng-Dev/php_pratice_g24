@@ -20,16 +20,16 @@
         $search = $_GET['search'];
 
 
-        $countProduct = $mysql->query("SELECT COUNT(*) as total from products INNER JOIN product_categories ON products.product_category_id = product_categories.id INNER JOIN users ON users.id = products.created_by WHERE products.name LIKE '%$search%' OR product_categories.name LIKE '%$search%' OR products.price LIKE '%$search%' ORDER BY $keyOrder $orderBy")->fetch_object();
+        $countProduct = $mysql->query("SELECT COUNT(*) as total from products LEFT JOIN product_categories ON products.product_category_id = product_categories.id LEFT JOIN users ON users.id = products.created_by WHERE products.name LIKE '%$search%' OR product_categories.name LIKE '%$search%' OR products.price LIKE '%$search%' ORDER BY $keyOrder $orderBy")->fetch_object();
         $totalButton = round($countProduct->total / $per_page);
 
-        $products = $mysql->query("SELECT products.* , product_categories.name as product_category_name, users.name as action_by FROM products INNER JOIN product_categories ON products.product_category_id = product_categories.id INNER JOIN users ON users.id = products.created_by WHERE products.name LIKE '%$search%' OR product_categories.name LIKE '%$search%' OR products.price LIKE '%$search%'  ORDER BY $keyOrder $orderBy LIMIT $per_page OFFSET $start_page");
+        $products = $mysql->query("SELECT products.* , product_categories.name as product_category_name, users.name as action_by FROM products LEFT JOIN product_categories ON products.product_category_id = product_categories.id LEFT JOIN users ON users.id = products.created_by WHERE products.name LIKE '%$search%' OR product_categories.name LIKE '%$search%' OR products.price LIKE '%$search%'  ORDER BY $keyOrder $orderBy LIMIT $per_page OFFSET $start_page");
 
     } else {
         $countProduct = $mysql->query("SELECT COUNT(*) as total from products")->fetch_object();
         $totalButton = round($countProduct->total / $per_page);
 
-        $products = $mysql->query("SELECT products.* , product_categories.name as product_category_name, users.name as action_by FROM products INNER JOIN product_categories ON products.product_category_id = product_categories.id INNER JOIN users ON users.id = products.created_by ORDER BY $keyOrder $orderBy LIMIT $per_page OFFSET $start_page");
+        $products = $mysql->query("SELECT products.* , product_categories.name as product_category_name, users.name as action_by FROM products LEFT JOIN product_categories ON products.product_category_id = product_categories.id LEFT JOIN users ON users.id = products.created_by ORDER BY $keyOrder $orderBy LIMIT $per_page OFFSET $start_page");
     }
 
 
